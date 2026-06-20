@@ -1,0 +1,349 @@
+{
+  "site": {
+    "name": "Việt Tín Hotel",
+    "tagline": "Nơi nghỉ dưỡng tĩnh lặng bên bờ biển",
+    "phone": "+84 387 613 662",
+    "email": "viettinhotel@gmail.com",
+    "address": "Văn Đông, Quỳnh Lưu, Nghệ An, Việt Nam",
+    "logo": "/images/brand/logo.svg",
+    "colors": {
+      "primary": "#1a1a1a",
+      "accent": "#8b7355"
+    }
+  },
+  "nav": [
+    { "label": "Trang chủ", "href": "index.html" },
+    { "label": "Phòng", "href": "rooms.html" },
+    { "label": "Ẩm thực", "href": "dining.html" },
+    { "label": "Trải nghiệm", "href": "experiences.html" },
+    { "label": "Về chúng tôi", "href": "about.html" },
+    { "label": "Liên hệ", "href": "contact.html" }
+  ],
+  "images": {
+    "homeHero": "/images/home/hero.jpg",
+    "roomsHero": "/images/rooms/hero.jpg",
+    "diningHero": "/images/dining/hero.jpg",
+    "experiencesHero": "/images/experiences/hero.jpg",
+    "aboutHero": "/images/about/hero.jpg",
+    "contactHero": "/images/contact/hero.jpg",
+    "bookingHero": "/images/booking/hero.jpg"
+  },
+  "pageTitles": {
+    "rooms": { "title": "Phòng & Suites", "subtitle": "Không gian nghỉ dưỡng" },
+    "dining": { "title": "Ẩm thực", "subtitle": "Hương vị tinh tế" },
+    "experiences": { "title": "Trải nghiệm", "subtitle": "Spa & wellness" },
+    "about": { "title": "Về chúng tôi", "subtitle": "Câu chuyện Serenity" },
+    "contact": { "title": "Liên hệ", "subtitle": "" },
+    "booking": { "title": "Đặt phòng", "subtitle": "" }
+  },
+  "placeholders": {
+    "homeHero": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80",
+    "roomsHero": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1920&q=80",
+    "diningHero": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80",
+    "experiencesHero": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1920&q=80",
+    "aboutHero": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1920&q=80",
+    "contactHero": "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80",
+    "bookingHero": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1920&q=80",
+    "room1": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200&q=80",
+    "room1a": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80",
+    "room1b": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80",
+    "room1c": "https://images.unsplash.com/photo-1611892440504-42a784e24d32?w=1200&q=80",
+    "room1d": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1200&q=80",
+    "room1e": "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=1200&q=80",
+    "room2": "https://images.unsplash.com/photo-1611892440504-42a784e24d32?w=1200&q=80",
+    "room2a": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80",
+    "room2b": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200&q=80",
+    "room2c": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1200&q=80",
+    "room2d": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80",
+    "room2e": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1200&q=80",
+    "room2f": "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=1200&q=80",
+    "room3": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80",
+    "room3a": "https://images.unsplash.com/photo-1611892440504-42a784e24d32?w=1200&q=80",
+    "room3b": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200&q=80",
+    "room3c": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80",
+    "room3d": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+    "room3e": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80",
+    "dining1": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
+    "dining2": "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80",
+    "dining3": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80",
+    "dining4": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
+    "dining5": "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=1200&q=80",
+    "dining6": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1200&q=80",
+    "dining7": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80",
+    "dining8": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=80",
+    "dining9": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
+    "exp1": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1400&q=85",
+    "exp1a": "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1400&q=85",
+    "exp1b": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1400&q=85",
+    "exp2": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1400&q=85",
+    "exp2a": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1400&q=85",
+    "exp2b": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1400&q=85",
+    "exp3": "https://images.unsplash.com/photo-1761644658016-324918bc373c?w=1400&q=85",
+    "exp3a": "https://images.unsplash.com/photo-1593078165899-c7d2ac0d3b44?w=1400&q=85",
+    "exp3b": "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=1400&q=85",
+    "exp4": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1400&q=85",
+    "exp4a": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1400&q=85",
+    "exp4b": "https://images.unsplash.com/photo-1517964937676-8e85d01d8e1d?w=1400&q=85",
+    "exp5": "https://images.unsplash.com/photo-1761279667732-3e499807f1f9?w=1400&q=85",
+    "exp5a": "https://images.unsplash.com/photo-1754212853626-7210fe0342a7?w=1400&q=85",
+    "exp5b": "https://images.unsplash.com/photo-1765747825083-eebe9a471afb?w=1400&q=85",
+    "about1": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80"
+  },
+  "home": {
+    "heroTitle": "Việt Tín Hotel",
+    "heroSubtitle": "Tinh tế · Tĩnh lặng · Trọn vẹn",
+    "introLabel": "Việt Tín",
+    "introTitle": "Chào mừng đến bên biển",
+    "introText": "Một không gian nghỉ dưỡng lấy cảm hứng từ sự tối giản và ấm áp — nơi sóng biển, ánh sáng dịu và từng chi tiết được chăm chút để bạn tìm lại nhịp sống chậm.",
+    "ctaRooms": "Khám phá phòng",
+    "ctaBooking": "Đặt phòng",
+    "roomsSection": {
+      "label": "Phòng nghỉ",
+      "title": "Không gian dành cho bạn",
+      "linkText": "Xem tất cả phòng",
+      "href": "rooms.html"
+    },
+    "diningSpot": {
+      "label": "Ẩm thực",
+      "title": "Nhà hàng Sao Băng",
+      "text": "Không gian ẩm thực hiện đại với tầm nhìn toàn cảnh, phục vụ Á – Âu sáng tạo.",
+      "cta": "Khám phá ẩm thực",
+      "href": "dining.html",
+      "images": [
+        { "src": "/images/dining/saobang-1.jpg", "key": "dining1" },
+        { "src": "/images/dining/saobang-2.jpg", "key": "dining2" },
+        { "src": "/images/dining/saobang-3.jpg", "key": "dining3" }
+      ]
+    },
+    "experiencesSection": {
+      "label": "Trải nghiệm",
+      "title": "Khoảnh khắc riêng tư",
+      "linkText": "Xem tất cả",
+      "href": "experiences.html"
+    },
+    "quote": {
+      "text": "Một trong những kỳ nghỉ đẹp nhất — bình yên, sạch sẽ và đội ngũ chu đáo từng khoảnh khắc.",
+      "cite": "Khách lưu trú, tháng 3/2026"
+    },
+    "ctaBand": {
+      "title": "Sẵn sàng cho kỳ nghỉ của bạn?",
+      "text": "Gửi yêu cầu đặt phòng — chúng tôi phản hồi trong vòng 24 giờ.",
+      "cta": "Đặt phòng ngay",
+      "href": "booking.html"
+    }
+  },
+  "rooms": [
+    {
+      "id": "deluxe",
+      "name": "Deluxe Room",
+      "image": "/images/rooms/deluxe-1.jpg",
+      "imageKey": "room1",
+      "priceFrom": "3.200.000",
+      "currency": "VND",
+      "description": "Phòng rộng 45m² với cửa sổ panorama và nội thất gỗ tự nhiên.",
+      "images": [
+        { "src": "/images/rooms/deluxe-1.jpg", "key": "room1" },
+        { "src": "/images/rooms/deluxe-2.jpg", "key": "room1a" },
+        { "src": "/images/rooms/deluxe-3.jpg", "key": "room1b" },
+        { "src": "/images/rooms/deluxe-4.jpg", "key": "room1c" },
+        { "src": "/images/rooms/deluxe-5.jpg", "key": "room1d" },
+        { "src": "/images/rooms/deluxe-6.jpg", "key": "room1e" }
+      ],
+      "amenities": ["Giường king", "Bồn tắm đứng", "Minibar", "WiFi cao tốc"]
+    },
+    {
+      "id": "suite",
+      "name": "Executive Suite",
+      "image": "/images/rooms/suite-1.jpg",
+      "imageKey": "room2",
+      "priceFrom": "5.800.000",
+      "currency": "VND",
+      "description": "Suite 72m² với phòng khách riêng và quyền lợi lounge.",
+      "images": [
+        { "src": "/images/rooms/suite-1.jpg", "key": "room2" },
+        { "src": "/images/rooms/suite-2.jpg", "key": "room2a" },
+        { "src": "/images/rooms/suite-3.jpg", "key": "room2b" },
+        { "src": "/images/rooms/suite-4.jpg", "key": "room2c" },
+        { "src": "/images/rooms/suite-5.jpg", "key": "room2d" },
+        { "src": "/images/rooms/suite-6.jpg", "key": "room2e" },
+        { "src": "/images/rooms/suite-7.jpg", "key": "room2f" }
+      ],
+      "amenities": ["Phòng khách", "Butler", "Bữa sáng", "Late checkout"]
+    },
+    {
+      "id": "penthouse",
+      "name": "Penthouse",
+      "image": "/images/rooms/penthouse-1.jpg",
+      "imageKey": "room3",
+      "priceFrom": "12.000.000",
+      "currency": "VND",
+      "description": "Tầng thượng riêng tư với sân thượng và tầm nhìn toàn cảnh thành phố.",
+      "images": [
+        { "src": "/images/rooms/penthouse-1.jpg", "key": "room3" },
+        { "src": "/images/rooms/penthouse-2.jpg", "key": "room3a" },
+        { "src": "/images/rooms/penthouse-3.jpg", "key": "room3b" },
+        { "src": "/images/rooms/penthouse-4.jpg", "key": "room3c" },
+        { "src": "/images/rooms/penthouse-5.jpg", "key": "room3d" },
+        { "src": "/images/rooms/penthouse-6.jpg", "key": "room3e" }
+      ],
+      "amenities": ["Sân thượng", "Hồ bơi riêng", "Chef riêng", "Xe đưa đón"]
+    }
+  ],
+  "roomsPage": {
+    "introLabel": "Việt Tín Hotel",
+    "introTitle": "Nơi bạn tìm lại sự tĩnh lặng",
+    "introText": "Mỗi căn phòng là một không gian riêng tư được thiết kế tối giản nhưng đầy đủ tiện nghi — từ giường king size, bồn tắm, đến tầm nhìn panorama ra biển hoặc thành phố.",
+    "whyLabel": "Tại sao chọn chúng tôi",
+    "whyTitle": "Trải nghiệm vượt mong đợi",
+    "whyItems": [
+      { "title": "Vị trí đắc địa", "text": "Cách bãi biển Quỳnh Lưu chỉ 3 phút đi bộ, tầm nhìn thoáng đãng từ mọi phòng." },
+      { "title": "Tiện nghi cao cấp", "text": "Minibar, WiFi tốc độ cao, dịch vụ Butler 24/7 và bữa sáng buffet mỗi ngày." },
+      { "title": "Không gian riêng tư", "text": "Từ Deluxe đến Penthouse — mỗi căn đều mang phong cách riêng, phù hợp từ du lịch một mình đến kỳ nghỉ gia đình." },
+      { "title": "Dịch vụ chu đáo", "text": "Đội ngũ nhân viên thân thiện, phản hồi nhanh chóng và luôn sẵn sàng hỗ trợ mọi lúc." }
+    ],
+    "ctaTitle": "Sẵn sàng cho kỳ nghỉ của bạn?",
+    "ctaText": "Đặt phòng ngay hôm nay — chúng tôi xác nhận trong vòng 24 giờ.",
+    "ctaBtn": "Đặt phòng ngay",
+    "ctaHref": "booking.html"
+  },
+  "dining": [
+    {
+      "name": "Nhà hàng Sao Băng",
+      "hours": "10:00 – 22:00",
+      "description": "Không gian ẩm thực hiện đại với tầm nhìn toàn cảnh, phục vụ Á – Âu sáng tạo.",
+      "images": [
+        { "src": "/images/dining/saobang-1.jpg", "key": "dining1" },
+        { "src": "/images/dining/saobang-2.jpg", "key": "dining2" },
+        { "src": "/images/dining/saobang-3.jpg", "key": "dining3" }
+      ]
+    },
+    {
+      "name": "Matsu Coffee & Tea",
+      "hours": "07:00 – 22:00",
+      "description": "Cà phê và trà Nhật Bản tinh tế trong không gian tĩnh lặng.",
+      "images": [
+        { "src": "/images/dining/matsu-1.jpg", "key": "dining4" },
+        { "src": "/images/dining/matsu-2.jpg", "key": "dining5" },
+        { "src": "/images/dining/matsu-3.jpg", "key": "dining6" }
+      ]
+    },
+    {
+      "name": "BBQ Ngoài Biển",
+      "hours": "06:30 – 22:30",
+      "description": "Thưởng thức hải sản nướng than hoa ngay trên bờ biển, gió biển và ánh hoàng hôn.",
+      "images": [
+        { "src": "/images/dining/garden-1.jpg", "key": "dining7" },
+        { "src": "/images/dining/garden-2.jpg", "key": "dining8" },
+        { "src": "/images/dining/garden-3.jpg", "key": "dining9" }
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "name": "Spa & Massage",
+      "description": "Liệu pháp massage và chăm sóc da với nguyên liệu thảo mộc.",
+      "image": "/images/experiences/spa.jpg",
+      "imageKey": "exp1",
+      "images": [
+        { "src": "/images/experiences/spa.jpg", "key": "exp1" },
+        { "src": "/images/experiences/spa-2.jpg", "key": "exp1a" },
+        { "src": "/images/experiences/spa-3.jpg", "key": "exp1b" }
+      ]
+    },
+    {
+      "name": "Bể bơi trong nhà",
+      "description": "Hồ bơi trong nhà ấm áp quanh năm, không gian yên tĩnh để thư giãn.",
+      "image": "/images/experiences/pool.jpg",
+      "imageKey": "exp2",
+      "images": [
+        { "src": "/images/experiences/pool.jpg", "key": "exp2" },
+        { "src": "/images/experiences/pool-2.jpg", "key": "exp2a" },
+        { "src": "/images/experiences/pool-3.jpg", "key": "exp2b" }
+      ]
+    },
+    {
+      "name": "Sân Pickleball",
+      "description": "Sân pickleball tiêu chuẩn với đầy đủ trang thiết bị, phù hợp cho mọi lứa tuổi.",
+      "image": "/images/experiences/pickleball.jpg",
+      "imageKey": "exp3",
+      "images": [
+        { "src": "/images/experiences/pickleball.jpg", "key": "exp3" },
+        { "src": "/images/experiences/pickleball-2.jpg", "key": "exp3a" },
+        { "src": "/images/experiences/pickleball-3.jpg", "key": "exp3b" }
+      ]
+    },
+    {
+      "name": "Phòng Gym",
+      "description": "Phòng tập gym hiện đại với các thiết bị tân tiến và huấn luyện viên cá nhân.",
+      "image": "/images/experiences/gym.jpg",
+      "imageKey": "exp4",
+      "images": [
+        { "src": "/images/experiences/gym.jpg", "key": "exp4" },
+        { "src": "/images/experiences/gym-2.jpg", "key": "exp4a" },
+        { "src": "/images/experiences/gym-3.jpg", "key": "exp4b" }
+      ]
+    },
+    {
+      "name": "Chèo Sup",
+      "description": "Trải nghiệm chèo SUP trên mặt biển, đón ánh bình minh hoặc hoàng hôn tuyệt đẹp.",
+      "image": "/images/experiences/sup.jpg",
+      "imageKey": "exp5",
+      "images": [
+        { "src": "/images/experiences/sup.jpg", "key": "exp5" },
+        { "src": "/images/experiences/sup-2.jpg", "key": "exp5a" },
+        { "src": "/images/experiences/sup-3.jpg", "key": "exp5b" }
+      ]
+    }
+  ],
+  "about": {
+    "title": "Câu chuyện của chúng tôi",
+    "paragraphs": [
+      "Việt Tín Hotel ra đời từ mong muốn tạo nên một ốc đảo bình yên giữa nhịp sống đô thị.",
+      "Chúng tôi tin rằng sự sang trọng thật sự nằm ở sự tinh giản — không gian thoáng, ánh sáng dịu và dịch vụ chu đáo từng khoảnh khắc."
+    ],
+    "image": "/images/about/story.jpg",
+    "imageKey": "about1"
+  },
+  "booking": {
+    "title": "Yêu cầu đặt phòng",
+    "note": "Chúng tôi sẽ xác nhận availability và gửi phản hồi trong vòng 24 giờ.",
+    "success": "Cảm ơn bạn! Yêu cầu đã được ghi nhận (demo — chưa gửi email thật)."
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "formSuccess": "Tin nhắn đã được ghi nhận (demo)."
+  },
+  "footer": {
+    "brand": {
+      "name": "Việt Tín Hotel",
+      "address": "Văn Đông, Quỳnh Lưu, Nghệ An, Việt Nam",
+      "phone": "+84 387 613 662",
+      "email": "viettinhotel@gmail.com"
+    },
+    "columns": [
+      {
+        "title": "Về Việt Tín Hotel",
+        "links": [
+          { "label": "Giới thiệu về chúng tôi", "href": "about.html" },
+          { "label": "Liên hệ", "href": "contact.html" },
+          { "label": "Câu hỏi thường gặp", "href": "#" },
+          { "label": "Tuyển dụng", "href": "#" },
+          { "label": "Hướng dẫn chỉ đường", "href": "#" }
+        ]
+      },
+      {
+        "title": "Điều khoản & Quy định",
+        "links": [
+          { "label": "Điều khoản chung", "href": "#" },
+          { "label": "Quy định chung", "href": "#" },
+          { "label": "Quy định về thanh toán", "href": "#" }
+        ]
+      },
+      {
+        "title": "Theo dõi chúng tôi",
+        "links": []
+      }
+    ],
+    "copyright": "© 2026 Việt Tín Hotel. Demo website. Powered by #dat_duckie_cutie"
+  }
+}

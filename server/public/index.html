@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Hotel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#c9a962',
+            'primary-dark': '#b8944f',
+            dark: '#1a1a2e',
+            'dark-light': '#16213e',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+  <!-- Login Page -->
+  <div id="loginContainer" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-dark to-dark-light p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-dark mb-2">Hotel Admin</h1>
+        <p class="text-gray-500">Đăng nhập để quản lý khách sạn</p>
+      </div>
+      
+      <div id="error" class="hidden bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg mb-6 text-sm"></div>
+      
+      <form id="loginForm" class="space-y-5">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Tên đăng nhập</label>
+          <input type="text" id="username" required autocomplete="username"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition outline-none">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu</label>
+          <input type="password" id="password" required autocomplete="current-password"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition outline-none">
+        </div>
+        <button type="submit" id="loginBtn"
+          class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+          Đăng nhập
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="hidden">
+    <!-- Header -->
+    <header class="bg-dark text-white shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <h1 class="text-xl font-bold">Hotel Admin</h1>
+          </div>
+          <button id="logoutBtn" class="px-4 py-2 border border-white/30 rounded-lg hover:bg-white hover:text-dark transition duration-200 text-sm font-medium">
+            Đăng xuất
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Stats Cards -->
+      <div id="statsSection" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-500 mb-1">Tổng đặt phòng</p>
+              <p id="statTotalBookings" class="text-3xl font-bold text-dark">-</p>
+            </div>
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-500 mb-1">Chờ xác nhận</p>
+              <p id="statPendingBookings" class="text-3xl font-bold text-yellow-600">-</p>
+            </div>
+            <div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-500 mb-1">Đã xác nhận</p>
+              <p id="statConfirmedBookings" class="text-3xl font-bold text-green-600">-</p>
+            </div>
+            <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-500 mb-1">Tin nhắn chưa đọc</p>
+              <p id="statUnreadMessages" class="text-3xl font-bold text-red-600">-</p>
+            </div>
+            <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-6">
+        <div class="border-b border-gray-200">
+          <nav class="flex -mb-px overflow-x-auto">
+            <button class="tab-btn active px-6 py-4 border-b-2 border-primary text-primary font-medium text-sm whitespace-nowrap" data-tab="bookings">
+              Đặt phòng
+            </button>
+            <button class="tab-btn px-6 py-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm whitespace-nowrap" data-tab="messages">
+              Tin nhắn
+            </button>
+            <button class="tab-btn px-6 py-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm whitespace-nowrap" data-tab="rooms">
+              Quản lý phòng
+            </button>
+            <button class="tab-btn px-6 py-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm whitespace-nowrap" data-tab="customers">
+              Khách hàng
+            </button>
+            <button class="tab-btn px-6 py-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm whitespace-nowrap" data-tab="settings">
+              Cài đặt Email
+            </button>
+          </nav>
+        </div>
+
+        <!-- Bookings Tab -->
+        <div id="bookingsTab" class="p-6">
+          <!-- Filters -->
+          <div class="flex flex-col sm:flex-row gap-4 mb-6">
+            <div class="flex-1">
+              <div class="relative">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" id="bookingSearch" placeholder="Tìm theo tên, email, SĐT..."
+                  class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm">
+              </div>
+            </div>
+            <select id="bookingStatusFilter" class="px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm bg-white">
+              <option value="">Tất cả trạng thái</option>
+              <option value="pending">Chờ xác nhận</option>
+              <option value="confirmed">Đã xác nhận</option>
+              <option value="cancelled">Đã hủy</option>
+            </select>
+            <input type="date" id="bookingDateFilter"
+              class="px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm">
+          </div>
+
+          <!-- Table -->
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-200">
+                  <th class="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">ID</th>
+                  <th class="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Khách hàng</th>
+                  <th class="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Liên hệ</th>
+                  <th class="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Phòng</th>
+                  <th class="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Ngày</th>
+                  <th class="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Trạng thái</th>
+                  <th class="text-left py-3 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="bookingsTableBody" class="divide-y divide-gray-100">
+                <tr><td colspan="7" class="py-8 text-center text-gray-400">Đang tải...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <p id="bookingPaginationInfo" class="text-sm text-gray-500"></p>
+            <div class="flex gap-2">
+              <button id="bookingPrevBtn" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                Trước
+              </button>
+              <button id="bookingNextBtn" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                Sau
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Messages Tab -->
+        <div id="messagesTab" class="hidden p-6">
+          <!-- Filters -->
+          <div class="flex flex-col sm:flex-row gap-4 mb-6">
+            <div class="flex-1">
+              <div class="relative">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" id="messageSearch" placeholder="Tìm theo tên, email, nội dung..."
+                  class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm">
+              </div>
+            </div>
+            <select id="messageReadFilter" class="px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm bg-white">
+              <option value="">Tất cả</option>
+              <option value="unread">Chưa đọc</option>
+              <option value="read">Đã đọc</option>
+            </select>
+          </div>
+
+          <!-- Messages List -->
+          <div id="messagesList" class="space-y-4">
+            <div class="text-center py-8 text-gray-400">Đang tải...</div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+            <p id="messagePaginationInfo" class="text-sm text-gray-500"></p>
+            <div class="flex gap-2">
+              <button id="messagePrevBtn" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                Trước
+              </button>
+              <button id="messageNextBtn" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                Sau
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const API_BASE = '';
+    const ITEMS_PER_PAGE = 10;
+
+    // State
+    let currentTab = 'bookings';
+    let allBookings = [];
+    let allMessages = [];
+    let bookingPage = 1;
+    let messagePage = 1;
+    let bookingFilters = { search: '', status: '', date: '' };
+    let messageFilters = { search: '', read: '' };
+
+    // DOM elements
+    const loginContainer = document.getElementById('loginContainer');
+    const dashboard = document.getElementById('dashboard');
+    const loginForm = document.getElementById('loginForm');
+    const errorDiv = document.getElementById('error');
+    const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    // Booking elements
+    const bookingSearch = document.getElementById('bookingSearch');
+    const bookingStatusFilter = document.getElementById('bookingStatusFilter');
+    const bookingDateFilter = document.getElementById('bookingDateFilter');
+    const bookingsTableBody = document.getElementById('bookingsTableBody');
+    const bookingPaginationInfo = document.getElementById('bookingPaginationInfo');
+    const bookingPrevBtn = document.getElementById('bookingPrevBtn');
+    const bookingNextBtn = document.getElementById('bookingNextBtn');
+
+    // Message elements
+    const messageSearch = document.getElementById('messageSearch');
+    const messageReadFilter = document.getElementById('messageReadFilter');
+    const messagesList = document.getElementById('messagesList');
+    const messagePaginationInfo = document.getElementById('messagePaginationInfo');
+    const messagePrevBtn = document.getElementById('messagePrevBtn');
+    const messageNextBtn = document.getElementById('messageNextBtn');
+
+    // Check auth
+    async function checkAuth() {
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/bookings`, { credentials: 'include' });
+        if (res.ok) {
+          showDashboard();
+        }
+      } catch (err) {
+        console.log('Not authenticated');
+      }
+    }
+
+    function showDashboard() {
+      loginContainer.classList.add('hidden');
+      dashboard.classList.remove('hidden');
+      loadDashboardData();
+    }
+
+    function showLogin() {
+      loginContainer.classList.remove('hidden');
+      dashboard.classList.add('hidden');
+    }
+
+    // Login
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      errorDiv.classList.add('hidden');
+      loginBtn.disabled = true;
+      loginBtn.textContent = 'Đang đăng nhập...';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ username, password })
+        });
+
+        const text = await res.text();
+        if (!res.ok) {
+          throw new Error(JSON.parse(text).error || 'Login failed');
+        }
+
+        showDashboard();
+      } catch (err) {
+        errorDiv.textContent = err.message;
+        errorDiv.classList.remove('hidden');
+      } finally {
+        loginBtn.disabled = false;
+        loginBtn.textContent = 'Đăng nhập';
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener('click', async () => {
+      await fetch(`${API_BASE}/api/auth/logout`, {
+        method: 'POST',
+        credentials: 'include'
+      });
+      showLogin();
+    });
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('active', 'border-primary', 'text-primary');
+          b.classList.add('border-transparent', 'text-gray-500');
+        });
+        btn.classList.add('active', 'border-primary', 'text-primary');
+        btn.classList.remove('border-transparent', 'text-gray-500');
+
+        const tabName = btn.dataset.tab;
+        if (tabName === 'bookings') {
+          document.getElementById('bookingsTab').classList.remove('hidden');
+          document.getElementById('messagesTab').classList.add('hidden');
+          currentTab = 'bookings';
+          renderBookings();
+        } else {
+          document.getElementById('bookingsTab').classList.add('hidden');
+          document.getElementById('messagesTab').classList.remove('hidden');
+          currentTab = 'messages';
+          renderMessages();
+        }
+      });
+    });
+
+    // Load dashboard stats
+    async function loadDashboardData() {
+      try {
+        const [bookingsRes, messagesRes] = await Promise.all([
+          fetch(`${API_BASE}/api/admin/bookings`, { credentials: 'include' }),
+          fetch(`${API_BASE}/api/admin/messages`, { credentials: 'include' })
+        ]);
+
+        if (!bookingsRes.ok || !messagesRes.ok) {
+          showLogin();
+          return;
+        }
+
+        const bookingsData = await bookingsRes.json();
+        const messagesData = await messagesRes.json();
+
+        allBookings = bookingsData.data || [];
+        allMessages = messagesData.data || [];
+
+        updateStats();
+        renderBookings();
+      } catch (err) {
+        console.error('Error loading dashboard:', err);
+      }
+    }
+
+    function updateStats() {
+      const totalBookings = allBookings.length;
+      const pendingBookings = allBookings.filter(b => b.status === 'pending').length;
+      const confirmedBookings = allBookings.filter(b => b.status === 'confirmed').length;
+      const unreadMessages = allMessages.filter(m => !m.read).length;
+
+      document.getElementById('statTotalBookings').textContent = totalBookings;
+      document.getElementById('statPendingBookings').textContent = pendingBookings;
+      document.getElementById('statConfirmedBookings').textContent = confirmedBookings;
+      document.getElementById('statUnreadMessages').textContent = unreadMessages;
+    }
+
+    // Booking filters
+    function getFilteredBookings() {
+      return allBookings.filter(b => {
+        const matchSearch = !bookingFilters.search || 
+          (b.name && b.name.toLowerCase().includes(bookingFilters.search.toLowerCase())) ||
+          (b.email && b.email.toLowerCase().includes(bookingFilters.search.toLowerCase())) ||
+          (b.phone && b.phone.toLowerCase().includes(bookingFilters.search.toLowerCase()));
+        const matchStatus = !bookingFilters.status || b.status === bookingFilters.status;
+        const matchDate = !bookingFilters.date || b.checkin === bookingFilters.date;
+        return matchSearch && matchStatus && matchDate;
+      });
+    }
+
+    function renderBookings() {
+      const filtered = getFilteredBookings();
+      const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE) || 1;
+      if (bookingPage > totalPages) bookingPage = totalPages;
+      
+      const start = (bookingPage - 1) * ITEMS_PER_PAGE;
+      const pageItems = filtered.slice(start, start + ITEMS_PER_PAGE);
+
+      if (filtered.length === 0) {
+        bookingsTableBody.innerHTML = '<tr><td colspan="7" class="py-8 text-center text-gray-400">Không có dữ liệu</td></tr>';
+      } else {
+        bookingsTableBody.innerHTML = pageItems.map(b => `
+          <tr class="hover:bg-gray-50 transition">
+            <td class="py-4 px-4 text-sm text-gray-600">#${b.id}</td>
+            <td class="py-4 px-4">
+              <p class="text-sm font-medium text-gray-900">${escapeHtml(b.name)}</p>
+            </td>
+            <td class="py-4 px-4">
+              <p class="text-sm text-gray-600">${escapeHtml(b.email)}</p>
+              <p class="text-sm text-gray-500">${escapeHtml(b.phone)}</p>
+            </td>
+            <td class="py-4 px-4 text-sm text-gray-600">${escapeHtml(b.roomType)}</td>
+            <td class="py-4 px-4">
+              <p class="text-sm text-gray-600">${formatDate(b.checkin)}</p>
+              <p class="text-xs text-gray-400">→ ${formatDate(b.checkout)}</p>
+            </td>
+            <td class="py-4 px-4">
+              <span class="inline-flex px-2.5 py-1 rounded-full text-xs font-medium ${getStatusClass(b.status)}">
+                ${getStatusText(b.status)}
+              </span>
+            </td>
+            <td class="py-4 px-4">
+              <div class="flex gap-2">
+                ${b.status !== 'confirmed' ? `
+                  <button onclick="updateBookingStatus(${b.id}, 'confirmed')" 
+                    class="px-3 py-1.5 bg-green-50 text-green-600 rounded-lg text-xs font-medium hover:bg-green-100 transition">
+                    Xác nhận
+                  </button>
+                ` : ''}
+                ${b.status !== 'cancelled' ? `
+                  <button onclick="updateBookingStatus(${b.id}, 'cancelled')" 
+                    class="px-3 py-1.5 bg-red-50 text-red-600 rounded-lg text-xs font-medium hover:bg-red-100 transition">
+                    Hủy
+                  </button>
+                ` : ''}
+              </div>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      bookingPaginationInfo.textContent = `Hiển thị ${start + 1}-${Math.min(start + ITEMS_PER_PAGE, filtered.length)} / ${filtered.length} đặt phòng`;
+      bookingPrevBtn.disabled = bookingPage <= 1;
+      bookingNextBtn.disabled = bookingPage >= totalPages;
+    }
+
+    // Message filters
+    function getFilteredMessages() {
+      return allMessages.filter(m => {
+        const matchSearch = !messageFilters.search ||
+          (m.name && m.name.toLowerCase().includes(messageFilters.search.toLowerCase())) ||
+          (m.email && m.email.toLowerCase().includes(messageFilters.search.toLowerCase())) ||
+          (m.message && m.message.toLowerCase().includes(messageFilters.search.toLowerCase()));
+        const matchRead = !messageFilters.read || 
+          (messageFilters.read === 'read' && m.read) || 
+          (messageFilters.read === 'unread' && !m.read);
+        return matchSearch && matchRead;
+      });
+    }
+
+    function renderMessages() {
+      const filtered = getFilteredMessages();
+      const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE) || 1;
+      if (messagePage > totalPages) messagePage = totalPages;
+      
+      const start = (messagePage - 1) * ITEMS_PER_PAGE;
+      const pageItems = filtered.slice(start, start + ITEMS_PER_PAGE);
+
+      if (filtered.length === 0) {
+        messagesList.innerHTML = '<div class="text-center py-8 text-gray-400">Không có tin nhắn</div>';
+      } else {
+        messagesList.innerHTML = pageItems.map(m => `
+          <div class="bg-gray-50 rounded-xl p-5 ${!m.read ? 'border-l-4 border-primary' : ''}">
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <p class="font-semibold text-gray-900">${escapeHtml(m.name)}</p>
+                <p class="text-sm text-gray-500">${escapeHtml(m.email)}</p>
+              </div>
+              <span class="text-xs text-gray-400">${formatDate(m.createdAt)}</span>
+            </div>
+            <p class="text-gray-700 mb-4 leading-relaxed">${escapeHtml(m.message)}</p>
+            <div class="flex justify-end">
+              ${!m.read ? `
+                <button onclick="markMessageRead(${m.id})" 
+                  class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg text-sm font-medium transition">
+                  Đánh dấu đã đọc
+                </button>
+              ` : '<span class="text-xs text-green-600 font-medium">Đã đọc</span>'}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      messagePaginationInfo.textContent = `Hiển thị ${start + 1}-${Math.min(start + ITEMS_PER_PAGE, filtered.length)} / ${filtered.length} tin nhắn`;
+      messagePrevBtn.disabled = messagePage <= 1;
+      messageNextBtn.disabled = messagePage >= totalPages;
+    }
+
+    // Update booking status
+    window.updateBookingStatus = async (id, status) => {
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/bookings/${id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ status })
+        });
+
+        if (!res.ok) {
+          showLogin();
+          return;
+        }
+
+        await loadDashboardData();
+      } catch (err) {
+        alert('Lỗi cập nhật trạng thái');
+      }
+    };
+
+    // Mark message as read
+    window.markMessageRead = async (id) => {
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/messages/${id}`, {
+          method: 'PATCH',
+          credentials: 'include'
+        });
+
+        if (!res.ok) {
+          showLogin();
+          return;
+        }
+
+        await loadDashboardData();
+      } catch (err) {
+        alert('Lỗi cập nhật trạng thái');
+      }
+    };
+
+    // Filter event listeners
+    bookingSearch.addEventListener('input', () => { bookingFilters.search = bookingSearch.value; bookingPage = 1; renderBookings(); });
+    bookingStatusFilter.addEventListener('change', () => { bookingFilters.status = bookingStatusFilter.value; bookingPage = 1; renderBookings(); });
+    bookingDateFilter.addEventListener('change', () => { bookingFilters.date = bookingDateFilter.value; bookingPage = 1; renderBookings(); });
+    messageSearch.addEventListener('input', () => { messageFilters.search = messageSearch.value; messagePage = 1; renderMessages(); });
+    messageReadFilter.addEventListener('change', () => { messageFilters.read = messageReadFilter.value; messagePage = 1; renderMessages(); });
+
+    // Pagination event listeners
+    bookingPrevBtn.addEventListener('click', () => { if (bookingPage > 1) { bookingPage--; renderBookings(); } });
+    bookingNextBtn.addEventListener('click', () => { bookingPage++; renderBookings(); });
+    messagePrevBtn.addEventListener('click', () => { if (messagePage > 1) { messagePage--; renderMessages(); } });
+    messageNextBtn.addEventListener('click', () => { messagePage++; renderMessages(); });
+
+    // Helpers
+    function escapeHtml(str) {
+      if (!str) return '';
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    }
+
+    function getStatusText(status) {
+      const map = { pending: 'Chờ xác nhận', confirmed: 'Đã xác nhận', cancelled: 'Đã hủy' };
+      return map[status] || status;
+    }
+
+    function getStatusClass(status) {
+      const map = {
+        pending: 'bg-yellow-100 text-yellow-700',
+        confirmed: 'bg-green-100 text-green-700',
+        cancelled: 'bg-red-100 text-red-700'
+      };
+      return map[status] || 'bg-gray-100 text-gray-700';
+    }
+
+    // Initialize
+    checkAuth();
+  </script>
+</body>
+</html>
