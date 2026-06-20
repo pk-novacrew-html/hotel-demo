@@ -1078,9 +1078,9 @@ body.nav-open {
     padding: 0 1rem;
   }
   .logo {
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    max-width: 7rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    max-width: 8.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
