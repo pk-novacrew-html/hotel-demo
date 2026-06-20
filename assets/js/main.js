@@ -204,7 +204,28 @@
     }
 
     const toggle = header.querySelector('.menu-toggle');
-    toggle?.addEventListener('click', () => mobileNav?.classList.toggle('open'));
+    toggle?.addEventListener('click', () => {
+      const isOpen = mobileNav?.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.classList.toggle('nav-open', isOpen);
+    });
+
+    mobileNav?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        toggle?.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      });
+    });
+
+    // Close mobile nav on outside click
+    mobileNav?.addEventListener('click', (e) => {
+      if (e.target === mobileNav) {
+        mobileNav.classList.remove('open');
+        toggle?.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+      }
+    });
 
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 40);

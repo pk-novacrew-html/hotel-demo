@@ -386,7 +386,14 @@ a:hover { opacity: 0.7; }
   transition: opacity 0.4s var(--ease), visibility 0.4s;
 }
 
-.nav-mobile.open { opacity: 1; visibility: visible; }
+.nav-mobile.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
 
 .nav-mobile a {
   font-family: var(--font-serif);
@@ -1064,6 +1071,37 @@ a:hover { opacity: 0.7; }
   background: var(--color-accent);
   color: var(--color-on-accent);
   opacity: 0.9;
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    padding: 0 1rem;
+  }
+  .logo {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    max-width: 7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 0;
+  }
+  .header-actions {
+    gap: 0.2rem;
+  }
+  .btn-book {
+    font-size: 0;
+    padding: 0.4rem;
+    min-width: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0;
+  }
+  .btn-book::before {
+    content: '↗';
+    font-size: 0.9rem;
+  }
 }
 
 @media (min-width: 1024px) {
