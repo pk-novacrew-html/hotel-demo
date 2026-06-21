@@ -1,4 +1,7 @@
 /* Serenity Hotel Demo — Aman-inspired minimal luxury */
+/* Preconnect to Google Fonts for faster loading */
+@import url('https://fonts.googleapis.com');
+@import url('https://fonts.gstatic.com') crossorigin;
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
 
 :root {
@@ -862,7 +865,20 @@ body.nav-open {
   border-top: 1px solid var(--color-border);
 }
 
-.site-footer .logo { margin-bottom: 1.25rem; display: inline-block; }
+.site-footer .logo {
+  margin-bottom: 1.25rem;
+  display: inline-block;
+  font-size: clamp(1rem, 3vw, 1.75rem);
+  letter-spacing: clamp(0, 0.15vw, 0.2em);
+}
+
+.footer-tagline {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin: 0.25rem 0 1rem;
+  font-style: italic;
+  font-family: var(--font-serif);
+}
 
 .footer-grid {
   max-width: 1200px;
@@ -881,12 +897,34 @@ body.nav-open {
   line-height: 1.9;
 }
 
+.footer-info p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-info p svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
 .footer-info a {
   color: inherit;
   text-decoration: none;
 }
 
 .footer-info a:hover { text-decoration: underline; }
+
+.footer-map-link { margin-top: 0.5rem; }
+.footer-map-link a { color: var(--color-accent-warm); font-size: 0.85rem; }
+
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-brand { text-align: center; }
+  .footer-brand .footer-info { align-items: center; }
+  .footer-brand .footer-info p { justify-content: center; }
+  .footer-cols { text-align: center; justify-items: center; }
+}
 
 .footer-cols {
   display: grid;
@@ -961,12 +999,6 @@ body.nav-open {
   letter-spacing: 0.1em;
   color: var(--color-text-muted);
   text-align: center;
-}
-
-@media (max-width: 860px) {
-  .footer-grid { grid-template-columns: 1fr; }
-  .footer-brand { text-align: center; }
-  .footer-cols { text-align: center; justify-items: center; }
 }
 
 /* Amenities */
